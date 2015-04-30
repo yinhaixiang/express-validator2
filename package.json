@@ -1,0 +1,28 @@
+{
+  "name": "express-validator2",
+  "version": "1.0.5",
+  "description": "a util to validate express params",
+  "main": "express-validator2.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "express",
+    "validator",
+    "validate"
+  ],
+  "dependencies": {
+    "validator": "3.28.0"
+  },
+  "author": {
+    "name": "Sean Yin",
+    "email": "yinhaixiang@qq.com"
+  },
+  "license": "MIT",
+  "readme": "you should use express-validator2 yin router\n\nfor example：\n\nvar validator = require('../libs/express-validator2');\n\nvar validator_config = require('./validator_config');\n\nvar validator.setConfig(validator_config);\n\napp.use(validator.validate);\n\n#the 'validator_config' is your own file like: 'test/validator_config2.js'\n\nmodule.exports = {\n  '/isRequired': {\n    name: {isRequired: true}\n  },\n\n  '/minLength': {\n    name: {minLength: 3}\n  },\n\n  '/maxLength': {\n    name: {maxLength: 3}\n  },\n\n  '/equals': {\n    name: {equals: 'ddd'}\n  },\n\n  '/contains': {\n    name: {contains: 'ab'}\n  },\n\n  '/matches': {\n    name: {matches: /^\\d+$/}\n  },\n\n  '/isEmail': {\n    name: {isEmail: true}\n  },\n\n  '/isURL': {\n    name: {isURL: true}\n  },\n\n  '/isFQDN': {\n    name: {isFQDN: true}\n  },\n\n  '/isIP': {\n    name: {isIP: true}\n  },\n\n  '/isAlpha': {\n    name: {isAlpha: true}\n  },\n\n  '/isNumeric': {\n    name: {isNumeric: true}\n  },\n\n  '/isAlphanumeric': {\n    name: {isAlphanumeric: true}\n  },\n\n  '/isBase64': {\n    name: {isBase64: true}\n  },\n\n  '/isHexadecimal': {\n    name: {isHexadecimal: true}\n  },\n\n  '/isHexColor': {\n    name: {isHexColor: true}\n  },\n\n  '/isLowercase': {\n    name: {isLowercase: true}\n  },\n\n  '/isUppercase': {\n    name: {isUppercase: true}\n  },\n\n  '/isInt': {\n    name: {isInt: true}\n  },\n\n  '/isFloat': {\n    name: {isFloat: true}\n  },\n\n  '/isDivisibleBy': {\n    name: {isDivisibleBy: 7}\n  },\n\n  '/isUUID': {\n    name: {isUUID: true}\n  },\n\n  '/isDate': {\n    name: {isDate: true}\n  },\n\n  '/isAfter': {\n    name: {isAfter: new Date('2015-02-14')}\n  },\n\n  '/isBefore': {\n    name: {isBefore: new Date('2015-02-14')}\n  },\n\n  '/isIn': {\n    name: {isIn: ['aa', 'bb', 'cc']}\n  },\n\n  '/isCreditCard': {\n    name: {isCreditCard: true}\n  },\n\n  '/isISBN': {\n    name: {isISBN: true}\n  },\n\n  '/isMobilePhone': {\n    name: {isMobilePhone: true}\n  },\n\n  '/isJSON': {\n    name: {isJSON: true}\n  },\n\n  '/isMultibyte': {\n    name: {isMultibyte: true}\n  },\n\n  '/isAscii': {\n    name: {isAscii: true}\n  },\n\n  '/isFullWidth': {\n    name: {isFullWidth: true}\n  },\n\n  '/isHalfWidth': {\n    name: {isHalfWidth: true}\n  },\n\n  '/isVariableWidth': {\n    name: {isVariableWidth: true}\n  },\n\n  '/isSurrogatePair': {\n    name: {isSurrogatePair: true}\n  },\n\n  '/isMongoId': {\n    name: {isMongoId: true}\n  }\n};",
+  "readmeFilename": "README.md",
+  "_id": "express-validator2@1.0.4",
+  "_shasum": "f435350cb37dfcc6b3e328f9ffbfa4edda2bc788",
+  "_from": "express-validator2@",
+  "_resolved": "https://registry.npmjs.org/express-validator2/-/express-validator2-1.0.4.tgz"
+}
