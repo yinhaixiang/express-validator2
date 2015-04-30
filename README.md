@@ -1,9 +1,5 @@
 # express-validator2
-
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
-
 a util to validate express params
-
 
 ### Quick Example(Javascript):
 ```javascript
@@ -21,8 +17,8 @@ the 'validator_config' is your own file like: 'test/validator_config2.js'
 // validator_config2.js
 
 module.exports = {
-  '/isRequired': {
-    name: {isRequired: true}
+  '/isRequired': {  //url
+    name: {isRequired: true, isUUID: false, contains: 'ab'}  //param: {regular: regular-value}
   },
 
   '/minLength': {

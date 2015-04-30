@@ -1,6 +1,6 @@
 module.exports = {
   '/isRequired': {
-    name: {isRequired: true}
+    name: {isRequired: true, isUUID: false, contains: 'ab'}
   },
 
   '/minLength': {
