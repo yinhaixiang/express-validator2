@@ -1,10 +1,14 @@
 {
   "name": "express-validator2",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "a util to validate express params",
   "main": "express-validator2.js",
   "scripts": {
     "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yinhaixiang/express-validator2.git"
   },
   "keywords": [
     "express",
