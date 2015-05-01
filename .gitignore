@@ -1,0 +1,13 @@
+.idea/*
+.DS_Store
+*.sublime-*
+*.log
+*.swp
+*.swo
+*.tmp
+*.dump
+
+node_modules
+
+
+
