@@ -1,6 +1,6 @@
 {
   "name": "express-validator2",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "a util to validate express params",
   "main": "express-validator2.js",
   "scripts": {
