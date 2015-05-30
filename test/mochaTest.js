@@ -1,5 +1,5 @@
 var assert = require("assert");
-var validator = require('../../dist/libs/express-validator2');
+var validator = require('../express-validator2');
 var validator_config = require('./validator_config2');
 validator.setConfig(validator_config);
 
@@ -38,7 +38,9 @@ describe('main', function () {
     var req = {
       path: '/isRequired',
       body: {
-        name: ''
+        email: 'yin@qq.com',
+        age: '2',
+        name: 'aaaaa'
       },
       query: {},
       params: {}

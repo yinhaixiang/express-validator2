@@ -1,8 +1,55 @@
-var validator = require('validator');
-var defaultErrorMessages = require('./default-errors');
-var config = null;
+var config, defaultErrorMessages, functions, validator;
 
-var strategies = {
+validator = require('validator');
+
+defaultErrorMessages = require('./default-errors');
+
+config = null;
+
+exports.validate = function(req, res, next) {
+  var flag, msg, needValidate, param, parameters, path, regulation, rule, rules, totalFlag, value;
+  totalFlag = true;
+  path = req.path;
+  msg = 'invalid params in api: [' + path + ']\n';
+  if (config[path]) {
+    parameters = config[path];
+    for (param in parameters) {
+      param = param;
+      rules = parameters[param];
+      needValidate = true;
+      value = req.query[param] || req.body[param] || req.params[param];
+      if (rules.isRequired === false) {
+        if (!value) {
+          needValidate = false;
+        }
+      } else {
+        if (!value) {
+          needValidate = false;
+          msg += 'param: [' + param + '] is invalid, input is: [' + value + '], invalid message is: [' + defaultErrorMessages['isRequired'] + ']\n';
+          totalFlag = false;
+        }
+      }
+      if (needValidate) {
+        for (regulation in rules) {
+          rule = rules[regulation];
+          flag = functions[regulation](rule, value);
+          if (!flag) {
+            msg += 'param: [' + param + '] is invalid, input is: [' + value + '], invalid message is: [' + defaultErrorMessages[regulation] + ']\n';
+            totalFlag = false;
+            break;
+          }
+        }
+      }
+    }
+  }
+  if (totalFlag) {
+    next();
+  } else {
+    return res.status(403).send(msg);
+  }
+};
+
+functions = {
   isRequired: function(rule, value) {
     if (rule) {
       return !validator.isNull(value);
@@ -225,53 +272,6 @@ var strategies = {
     } else {
       return validator.matches(value, rule);
     }
-  }
-};
-
-exports.validate = function (req, res, next) {
-  var totalValidateFlag = true;
-  var path = req.path;
-  var errMsg = 'invalid params in api: [' + path + ']\n';
-  var parameters = null;
-  var rules = null;
-  var needValidate = true;
-  var value = null;
-  var rule = null;
-  var validateFlag = true;
-  if(config[path]) {
-    parameters = config[path];
-    for(var param in parameters) {
-      rules = parameters[param];
-      needValidate = true;
-      value = req.query[param] || req.body[param] || req.params[param];
-      if (rules.isRequired === false) {
-        if (!value) {
-          needValidate = false;
-        }
-      } else {
-        if(!value) {
-          needValidate = false;
-          errMsg += 'param: [' + param + '] is invalid, input is: [' + value + '], invalid message is: [' + defaultErrorMessages['isRequired'] + ']\n';
-          totalValidateFlag = false;
-        }
-      }
-      if(needValidate) {
-        for (var regulation in rules) {
-          rule = rules[regulation];
-          validateFlag = strategies[regulation](rule, value);
-          if (!validateFlag) {
-            errMsg += 'param: [' + param + '] is invalid, input is: [' + value + '], invalid message is: [' + defaultErrorMessages[regulation] + ']\n';
-            totalValidateFlag = false;
-            break;
-          }
-        }
-      }
-    }
-  }
-  if (totalValidateFlag) {
-    next();
-  } else {
-    return res.status(403).send(errMsg);
   }
 };
 

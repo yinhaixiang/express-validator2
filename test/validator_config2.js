@@ -1,6 +1,8 @@
 module.exports = {
   '/isRequired': {
-    name: {isRequired: true, isUUID: false, contains: 'ab'}
+    email: {isRequired: false, isEmail: true, contains: 'com'},
+    age: {isRequired: false, isNumeric: true},
+    name: {isRequired: false, isLength:[3, 5]}
   },
 
   '/minLength': {
